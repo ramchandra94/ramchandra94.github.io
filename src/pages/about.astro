@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_DESCRIPTION } from '../consts';
+---
+
+<BaseLayout title="About — G.V Rama Chandra" description={SITE_DESCRIPTION}>
+
+  <!-- Header -->
+  <section class="mb-12 pb-10 border-b border-gray-100">
+    <h1 class="text-2xl font-bold text-gray-900 mb-1">G.V Rama Chandra</h1>
+    <p class="text-indigo-600 text-sm font-medium mb-4">SDE2 at Amazon · IIT Kharagpur</p>
+    <p class="text-gray-600 text-sm leading-relaxed mb-6 max-w-xl">
+      Software Engineer with 7+ years of experience across distributed systems, backend platforms,
+      and ML engineering. Currently working on Route53 DNS infrastructure at Amazon.
+      I started my career in machine learning, moved into backend and platform engineering,
+      and now work on large-scale DNS systems. I'm drawn to problems that require both depth and scale.
+    </p>
+    <div class="flex items-center gap-5 text-sm flex-wrap">
+      <a href="https://github.com/ramchandra94" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">GitHub →</a>
+      <a href="https://www.linkedin.com/in/ramachandragobburu" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">LinkedIn →</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">Resume →</a>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="mb-12">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Experience</h2>
+
+    <div class="space-y-8">
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Amazon</h3>
+              <p class="text-sm text-indigo-600">SDE2 — Route53 & DNS Infrastructure</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">Sep 2024 – Present · Herndon, US</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+            <li>Working on Route53 DNS infrastructure and Route53 QueryLogging components</li>
+            <li>Large-scale data processing of DNS query data</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Amazon</h3>
+              <p class="text-sm text-indigo-600">SDE2 — Amazon Music</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">Nov 2022 – Aug 2024 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+            <li>Promoted Amazon Music app installs via Amazon Retail Music through In-App message campaigns and experiments</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Udaan</h3>
+              <p class="text-sm text-indigo-600">Software Engineer — Financial Platform</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">Dec 2021 – Oct 2022 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+            <li>Designed & developed services for a financial compute platform focused on ledger bookkeeping and payment settlement</li>
+            <li>Drove adoption of OpenTelemetry-based observability; developed PromQL queries for cronjob failure alerting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Capillary Technologies</h3>
+              <p class="text-sm text-indigo-600">Senior Software Engineer — Platform & Infrastructure</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">Dec 2020 – Dec 2021 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+            <li>Optimized dimension computation logic in ETL pipelines, reducing resource utilization significantly</li>
+            <li>Developed IAC modules, CI/CD services for deploying infra components across multiple Kubernetes clusters</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Zycus</h3>
+              <p class="text-sm text-indigo-600">Associate Tech Lead — ML & Forecasting</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">Jul 2020 – Nov 2020 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+            <li>Built deep-learning based demand & price forecasting time series models and model inference services</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Capillary Technologies</h3>
+              <p class="text-sm text-indigo-600">Machine Learning Engineer</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">May 2018 – Apr 2020 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+            <li>Built a CLI tool to launch YARN-managed Hadoop Spark clusters on AWS EC2, cutting cluster launch time from 20 minutes to 2 minutes</li>
+            <li>Designed distributed batch jobs for data collection, cleaning, and aggregation — reduced processing time from 2 days to 5 hours for 6 billion data points, cutting costs by 50%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-gray-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Metripping Technologies</h3>
+              <p class="text-sm text-gray-500">Data Scientist</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">Jan 2018 – Apr 2018 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed list-disc list-inside">
+            <li>Built data pipeline jobs using PySpark</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1 bg-gray-100 rounded shrink-0 mt-1"></div>
+        <div>
+          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">VizExperts</h3>
+              <p class="text-sm text-gray-500">Graphics Engineer</p>
+            </div>
+            <span class="text-xs text-gray-400 shrink-0">May 2017 – Dec 2017 · Bangalore</span>
+          </div>
+          <ul class="text-sm text-gray-600 leading-relaxed list-disc list-inside">
+            <li>Built 3D graphics simulations of EO sensors for missile launch detection</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="mb-12">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Education</h2>
+    <div class="flex gap-4">
+      <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
+      <div>
+        <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900">IIT Kharagpur</h3>
+            <p class="text-sm text-indigo-600">Dual Degree — Industrial and Systems Engineering</p>
+          </div>
+          <span class="text-xs text-gray-400 shrink-0">2012 – 2017</span>
+        </div>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          BTech project on Twitter Sentiment Analysis using Word Vectors and LSTM neural networks,
+          and grammar rule-based factual question generation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="mb-12">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Skills</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Languages</h3>
+        <div class="flex flex-wrap gap-2">
+          {["Java", "C/C++", "Kotlin", "Golang", "Scala", "Python"].map(s => (
+            <span class="px-2.5 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">{s}</span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Tools & Technologies</h3>
+        <div class="flex flex-wrap gap-2">
+          {["AWS", "Kubernetes", "Apache Spark", "SpringBoot", "Terraform", "OpenTelemetry", "RabbitMQ", "Databricks", "PromQL"].map(s => (
+            <span class="px-2.5 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">{s}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Currently Learning -->
+  <section class="mb-12">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Currently Learning</h2>
+    <div class="space-y-4">
+      <div class="flex gap-4 items-start">
+        <span class="text-indigo-400 text-xs mt-0.5 shrink-0">▸</span>
+        <div>
+          <p class="text-sm font-medium text-gray-900">CMU 15-445 Database Systems</p>
+          <p class="text-xs text-gray-500">Working through the Fall 2022 lectures and Spring 2023 projects</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <span class="text-indigo-400 text-xs mt-0.5 shrink-0">▸</span>
+        <div>
+          <p class="text-sm font-medium text-gray-900">MIT 6.824 Distributed Systems</p>
+          <p class="text-xs text-gray-500">Working through the course lectures and labs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section>
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Certifications</h2>
+    <div class="space-y-2">
+      <p class="text-sm text-gray-600">Certificate of Excellence in Introduction to C++ — Coding Ninjas</p>
+      <p class="text-sm text-gray-600">Computer Vision Nanodegree — Udacity</p>
+    </div>
+  </section>
+
+</BaseLayout>
