@@ -1,0 +1,39 @@
+---
+title: "Welcome to My Blog"
+description: "An introduction to this blog — what I'll be writing about, why I started it, and what you can expect."
+pubDate: 2026-06-13
+tags: ["meta", "introduction"]
+---
+
+import Mermaid from '../../components/Mermaid.astro';
+
+Welcome! I'm Ramachandra, a Software Engineer interested in system design, distributed systems, and backend architecture.
+
+This blog is my space to think out loud — writing about the systems I build, the tradeoffs I encounter, and the architectural patterns that make complex systems work.
+
+## What I'll Write About
+
+- **System Design** — how to architect scalable, reliable systems and the tradeoffs involved
+- **Backend Engineering** — databases, APIs, queues, and the glue that holds services together
+- **Architecture Diagrams** — visual breakdowns of how real systems work
+
+## Example: A Simple Web Architecture
+
+Here's a taste of what diagrams will look like:
+
+<Mermaid code={`
+graph TD
+    User["User"] --> CDN["CDN / Edge"]
+    CDN --> LB["Load Balancer"]
+    LB --> API1["API Server"]
+    LB --> API2["API Server"]
+    API1 --> Cache["Redis Cache"]
+    API2 --> Cache
+    API1 --> DB[("PostgreSQL")]
+    API2 --> DB
+    API1 --> Queue["Message Queue"]
+    Queue --> Worker["Background Worker"]
+    Worker --> DB
+`} />
+
+More posts coming soon. Thanks for being here.

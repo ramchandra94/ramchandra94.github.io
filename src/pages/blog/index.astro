@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={`Blog — ${SITE_TITLE}`} description="All blog posts by Ramachandra">
+  <div class="mb-10">
+    <h1 class="text-xl font-bold text-gray-900 mb-1">Blog</h1>
+    <p class="text-sm text-gray-400">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+  </div>
+  {posts.length > 0 ? (
+    posts.map(post => (
+      <BlogCard
+        title={post.data.title}
+        description={post.data.description}
+        pubDate={post.data.pubDate}
+        tags={post.data.tags}
+        slug={post.slug}
+      />
+    ))
+  ) : (
+    <p class="text-sm text-gray-400 py-6">No posts yet. Check back soon.</p>
+  )}
+</BaseLayout>

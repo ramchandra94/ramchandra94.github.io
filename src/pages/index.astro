@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { SITE_TITLE, SITE_DESCRIPTION, GITHUB_URL, LINKEDIN_URL } from '../consts';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <section class="mb-14 pb-10 border-b border-gray-100">
+    <h1 class="text-xl font-bold text-gray-900 mb-1">Ramachandra</h1>
+    <p class="text-indigo-600 text-sm font-medium mb-5">Software Engineer</p>
+    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+      I write about system design, backend engineering, distributed systems, and software architecture.
+      I enjoy breaking down complex ideas and making them clear — often with diagrams.
+    </p>
+    <div class="flex items-center gap-5 text-sm">
+      <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">
+        GitHub →
+      </a>
+      {LINKEDIN_URL && (
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">
+          LinkedIn →
+        </a>
+      )}
+    </div>
+  </section>
+
+  <section>
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Recent Posts</h2>
+      <a href="/blog" class="text-xs text-gray-400 hover:text-indigo-600 transition-colors">View all →</a>
+    </div>
+    {posts.length > 0 ? (
+      posts.map(post => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags}
+          slug={post.slug}
+        />
+      ))
+    ) : (
+      <p class="text-sm text-gray-400 py-6">Posts coming soon.</p>
+    )}
+  </section>
+</BaseLayout>

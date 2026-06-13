@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="An introduction to this blog — what I'll be writing about, why I started it, and what you can expect."><meta name="generator" content="Astro v4.16.19"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><title>Welcome to My Blog — Ramachandra</title><link rel="stylesheet" href="/_astro/_slug_.CAvHapzh.css"><script src="/_astro/Mermaid.astro_astro_type_script_index_0_lang.D_dXF0pN.js" type="module"></script></head> <body class="bg-white text-gray-900 antialiased min-h-screen flex flex-col"> <header class="border-b border-gray-200 sticky top-0 bg-white/95 backdrop-blur z-10"> <nav class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between"> <a href="/" class="font-semibold text-gray-900 hover:text-indigo-600 transition-colors text-sm"> Ramachandra </a> <div class="flex items-center gap-6 text-sm"> <a href="/" class="transition-colors text-gray-500 hover:text-gray-900">
+About
+</a> <a href="/blog" class="transition-colors text-gray-900 font-medium">
+Blog
+</a> <a href="https://github.com/ramchandra94" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">
+GitHub
+</a> </div> </nav> </header> <main class="flex-1 max-w-2xl mx-auto w-full px-6 py-12">  <article> <header class="mb-10"> <div class="mb-4"> <a href="/blog" class="text-sm text-gray-400 hover:text-gray-600 transition-colors">← All posts</a> </div> <h1 class="text-2xl font-bold text-gray-900 leading-tight mb-4">Welcome to My Blog</h1> <div class="flex items-center gap-4 text-sm text-gray-400 flex-wrap"> <time datetime="2026-06-13T00:00:00.000Z"> June 12, 2026 </time>  </div> <div class="flex flex-wrap gap-2 mt-3"> <span class="px-2.5 py-0.5 text-xs bg-gray-100 text-gray-500 rounded-full font-medium">
+#meta </span><span class="px-2.5 py-0.5 text-xs bg-gray-100 text-gray-500 rounded-full font-medium">
+#introduction </span> </div> </header> <div class="prose prose-gray prose-sm max-w-none
+      prose-headings:font-semibold prose-headings:text-gray-900
+      prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline
+      prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+      prose-pre:bg-gray-950 prose-pre:text-gray-100
+      prose-blockquote:border-indigo-300 prose-blockquote:text-gray-600
+      prose-img:rounded-lg">  <p>Welcome! I’m Ramachandra, a Software Engineer interested in system design, distributed systems, and backend architecture.</p>
+<p>This blog is my space to think out loud — writing about the systems I build, the tradeoffs I encounter, and the architectural patterns that make complex systems work.</p>
+<h2 id="what-ill-write-about">What I’ll Write About</h2>
+<ul>
+<li><strong>System Design</strong> — how to architect scalable, reliable systems and the tradeoffs involved</li>
+<li><strong>Backend Engineering</strong> — databases, APIs, queues, and the glue that holds services together</li>
+<li><strong>Architecture Diagrams</strong> — visual breakdowns of how real systems work</li>
+</ul>
+<h2 id="example-a-simple-web-architecture">Example: A Simple Web Architecture</h2>
+<p>Here’s a taste of what diagrams will look like:</p>
+<div class="mermaid-wrapper my-8 flex justify-center overflow-x-auto rounded-lg bg-gray-50 p-4"> <pre class="mermaid not-prose">
+graph TD
+  User[&quot;User&quot;] --&gt; CDN[&quot;CDN / Edge&quot;]
+  CDN --&gt; LB[&quot;Load Balancer&quot;]
+  LB --&gt; API1[&quot;API Server&quot;]
+  LB --&gt; API2[&quot;API Server&quot;]
+  API1 --&gt; Cache[&quot;Redis Cache&quot;]
+  API2 --&gt; Cache
+  API1 --&gt; DB[(&quot;PostgreSQL&quot;)]
+  API2 --&gt; DB
+  API1 --&gt; Queue[&quot;Message Queue&quot;]
+  Queue --&gt; Worker[&quot;Background Worker&quot;]
+  Worker --&gt; DB
+</pre> </div> 
+<p>More posts coming soon. Thanks for being here.</p>  </div> </article>  </main> <footer class="border-t border-gray-100 mt-20"> <div class="max-w-2xl mx-auto px-6 py-6 text-xs text-gray-400 flex items-center justify-between"> <span>© 2026 Ramachandra</span> <span>Built with <a href="https://astro.build" target="_blank" rel="noopener" class="hover:text-gray-600 transition-colors">Astro</a></span> </div> </footer> </body></html>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'blog'>['data'];
+const { title, description, pubDate, updatedDate, tags } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Ramachandra`} description={description}>
+  <article>
+    <header class="mb-10">
+      <div class="mb-4">
+        <a href="/blog" class="text-sm text-gray-400 hover:text-gray-600 transition-colors">← All posts</a>
+      </div>
+      <h1 class="text-2xl font-bold text-gray-900 leading-tight mb-4">{title}</h1>
+      <div class="flex items-center gap-4 text-sm text-gray-400 flex-wrap">
+        <time datetime={pubDate.toISOString()}>
+          {pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        {updatedDate && (
+          <span>
+            Updated <time datetime={updatedDate.toISOString()}>
+              {updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </span>
+        )}
+      </div>
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-3">
+          {tags.map(tag => (
+            <span class="px-2.5 py-0.5 text-xs bg-gray-100 text-gray-500 rounded-full font-medium">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+    <div class="prose prose-gray prose-sm max-w-none
+      prose-headings:font-semibold prose-headings:text-gray-900
+      prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline
+      prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+      prose-pre:bg-gray-950 prose-pre:text-gray-100
+      prose-blockquote:border-indigo-300 prose-blockquote:text-gray-600
+      prose-img:rounded-lg">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
