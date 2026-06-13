@@ -1,303 +1,228 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_DESCRIPTION } from '../consts';
+
+const experiences = [
+  {
+    company: 'Amazon',
+    role: 'SDE II — Route 53 & DNS Infrastructure',
+    period: 'Sep 2024 – Present',
+    place: 'Herndon, US',
+    accent: true,
+    points: [
+      'Building Route 53 DNS infrastructure and Route 53 QueryLogging components',
+      'Large-scale data processing of DNS query data at internet scale',
+    ],
+  },
+  {
+    company: 'Amazon',
+    role: 'SDE II — Amazon Music',
+    period: 'Nov 2022 – Aug 2024',
+    place: 'Bangalore',
+    accent: true,
+    points: [
+      'Drove Amazon Music app-install growth via Amazon Retail Music through large-scale in-app messaging campaigns and experimentation',
+    ],
+  },
+  {
+    company: 'Udaan',
+    role: 'Software Engineer — Financial Platform',
+    period: 'Dec 2021 – Oct 2022',
+    place: 'Bangalore',
+    accent: true,
+    points: [
+      'Designed & built services for a financial compute platform handling ledger bookkeeping and payment settlement',
+      'Drove adoption of OpenTelemetry-based observability and PromQL-based failure alerting',
+    ],
+  },
+  {
+    company: 'Capillary Technologies',
+    role: 'Senior Software Engineer — Platform & Infrastructure',
+    period: 'Dec 2020 – Dec 2021',
+    place: 'Bangalore',
+    accent: true,
+    points: [
+      'Optimized dimension-computation logic in ETL pipelines, significantly reducing resource utilization',
+      'Built IaC modules and CI/CD for deploying infrastructure across multiple Kubernetes clusters',
+    ],
+  },
+  {
+    company: 'Zycus',
+    role: 'Associate Tech Lead — ML & Forecasting',
+    period: 'Jul 2020 – Nov 2020',
+    place: 'Bangalore',
+    accent: true,
+    points: [
+      'Built deep-learning demand & price forecasting time-series models and their inference services',
+    ],
+  },
+  {
+    company: 'Capillary Technologies',
+    role: 'Machine Learning Engineer',
+    period: 'May 2018 – Apr 2020',
+    place: 'Bangalore',
+    accent: true,
+    points: [
+      'Built a CLI tool to launch YARN-managed Hadoop Spark clusters on AWS EC2 — cut launch time from 20 min to 2 min',
+      'Re-architected distributed batch jobs over 6B+ data points: 2 days → 5 hours, ~50% lower cost',
+    ],
+  },
+  {
+    company: 'Metripping Technologies',
+    role: 'Data Scientist',
+    period: 'Jan 2018 – Apr 2018',
+    place: 'Bangalore',
+    accent: false,
+    points: ['Built data pipeline jobs using PySpark'],
+  },
+  {
+    company: 'VizExperts',
+    role: 'Graphics Engineer',
+    period: 'May 2017 – Dec 2017',
+    place: 'Bangalore',
+    accent: false,
+    points: ['Built 3D graphics simulations of EO sensors for missile-launch detection'],
+  },
+];
+
+const languages = ['Java', 'C/C++', 'Kotlin', 'Go', 'Scala', 'Python'];
+const tools = ['AWS', 'Kubernetes', 'Apache Spark', 'Spring Boot', 'Terraform', 'OpenTelemetry', 'RabbitMQ', 'Databricks', 'PromQL'];
+const learning = [
+  { code: 'CMU 15-445', title: 'Database Systems', note: 'Storage, query execution, concurrency control' },
+  { code: 'MIT 6.824', title: 'Distributed Systems', note: 'Consensus, replication, fault tolerance' },
+];
 ---
 
 <BaseLayout title="About — G.V Rama Chandra" description={SITE_DESCRIPTION}>
 
-  <!-- Header -->
-  <section class="mb-12 pb-10 border-b border-gray-100">
-    <h1 class="text-2xl font-bold text-gray-900 mb-1">G.V Rama Chandra</h1>
-    <p class="text-indigo-600 text-sm font-medium mb-4">SDE2 at Amazon · IIT Kharagpur</p>
-    <p class="text-gray-600 text-sm leading-relaxed mb-6 max-w-xl">
-      Software Engineer with 7+ years of experience across distributed systems, backend platforms,
-      and ML engineering. Currently working on Route53 DNS infrastructure at Amazon.
-      I started my career in machine learning, moved into backend and platform engineering,
-      and now work on large-scale DNS systems. I'm drawn to problems that require both depth and scale.
-    </p>
-    <div class="flex items-center gap-5 text-sm flex-wrap">
-      <a href="https://github.com/ramchandra94" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">GitHub →</a>
-      <a href="https://www.linkedin.com/in/ramachandragobburu" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">LinkedIn →</a>
-      <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-900 transition-colors">Resume →</a>
+  <!-- Hero -->
+  <section class="relative reveal mb-16" style="animation-delay: 0ms">
+    <div aria-hidden="true" class="dot-grid pointer-events-none absolute -inset-x-10 -top-16 h-64"></div>
+    <div class="relative">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.25em] text-indigo-600 mb-3">Software Engineer</p>
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-3">G.V Rama Chandra</h1>
+        </div>
+        <div class="font-mono text-sm font-medium text-indigo-600 h-12 w-12 shrink-0 rounded-xl border border-indigo-200 bg-indigo-50/60 flex items-center justify-center">
+          RC
+        </div>
+      </div>
+      <p class="font-mono text-xs text-gray-500 mb-6">
+        SDE II @ Amazon · Route&nbsp;53 &nbsp;//&nbsp; 9+ years &nbsp;//&nbsp; IIT Kharagpur
+      </p>
+      <p class="text-[15px] text-gray-600 leading-relaxed max-w-xl mb-7">
+        I build large-scale distributed systems. Currently working on Amazon Route&nbsp;53 DNS
+        infrastructure. Over 9+ years I've moved from machine learning through backend and platform
+        engineering into systems that operate at internet scale — I'm drawn to the problems where
+        <span class="text-gray-900 font-medium">correctness and scale meet</span>.
+      </p>
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="https://github.com/ramchandra94" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:border-indigo-300 hover:text-indigo-600">
+          GitHub <span class="text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-500">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/ramachandragobburu" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:border-indigo-300 hover:text-indigo-600">
+          LinkedIn <span class="text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-500">↗</span>
+        </a>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:border-indigo-300 hover:text-indigo-600">
+          Résumé <span class="text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-500">↓</span>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Experience -->
-  <section class="mb-12">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Experience</h2>
-
-    <div class="space-y-8">
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Amazon</h3>
-              <p class="text-sm text-indigo-600">SDE2 — Route53 & DNS Infrastructure</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">Sep 2024 – Present · Herndon, US</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
-            <li>Working on Route53 DNS infrastructure and Route53 QueryLogging components</li>
-            <li>Large-scale data processing of DNS query data</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Amazon</h3>
-              <p class="text-sm text-indigo-600">SDE2 — Amazon Music</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">Nov 2022 – Aug 2024 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
-            <li>Promoted Amazon Music app installs via Amazon Retail Music through In-App message campaigns and experiments</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Udaan</h3>
-              <p class="text-sm text-indigo-600">Software Engineer — Financial Platform</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">Dec 2021 – Oct 2022 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
-            <li>Designed & developed services for a financial compute platform focused on ledger bookkeeping and payment settlement</li>
-            <li>Drove adoption of OpenTelemetry-based observability; developed PromQL queries for cronjob failure alerting</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Capillary Technologies</h3>
-              <p class="text-sm text-indigo-600">Senior Software Engineer — Platform & Infrastructure</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">Dec 2020 – Dec 2021 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
-            <li>Optimized dimension computation logic in ETL pipelines, reducing resource utilization significantly</li>
-            <li>Developed IAC modules, CI/CD services for deploying infra components across multiple Kubernetes clusters</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Zycus</h3>
-              <p class="text-sm text-indigo-600">Associate Tech Lead — ML & Forecasting</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">Jul 2020 – Nov 2020 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
-            <li>Built deep-learning based demand & price forecasting time series models and model inference services</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Capillary Technologies</h3>
-              <p class="text-sm text-indigo-600">Machine Learning Engineer</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">May 2018 – Apr 2020 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
-            <li>Built a CLI tool to launch YARN-managed Hadoop Spark clusters on AWS EC2, cutting cluster launch time from 20 minutes to 2 minutes</li>
-            <li>Designed distributed batch jobs for data collection, cleaning, and aggregation — reduced processing time from 2 days to 5 hours for 6 billion data points, cutting costs by 50%</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-gray-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">Metripping Technologies</h3>
-              <p class="text-sm text-gray-500">Data Scientist</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">Jan 2018 – Apr 2018 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed list-disc list-inside">
-            <li>Built data pipeline jobs using PySpark</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex gap-4">
-        <div class="w-1 bg-gray-100 rounded shrink-0 mt-1"></div>
-        <div>
-          <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-900">VizExperts</h3>
-              <p class="text-sm text-gray-500">Graphics Engineer</p>
-            </div>
-            <span class="text-xs text-gray-400 shrink-0">May 2017 – Dec 2017 · Bangalore</span>
-          </div>
-          <ul class="text-sm text-gray-600 leading-relaxed list-disc list-inside">
-            <li>Built 3D graphics simulations of EO sensors for missile launch detection</li>
-          </ul>
-        </div>
-      </div>
-
+  <section class="reveal mb-16" style="animation-delay: 80ms">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="font-mono text-xs text-indigo-600">01</span>
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Experience</h2>
+      <span class="flex-1 h-px bg-gray-200"></span>
     </div>
+
+    <ol class="relative ml-1 border-l border-gray-200 space-y-9">
+      {experiences.map((exp) => (
+        <li class="relative pl-7">
+          <span class={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ring-4 ring-white ${exp.accent ? 'bg-indigo-600' : 'bg-gray-300'}`}></span>
+          <div class="flex items-baseline justify-between gap-4 flex-wrap">
+            <h3 class="text-[15px] font-semibold text-gray-900">{exp.company}</h3>
+            <span class="font-mono text-[11px] text-gray-400 shrink-0">{exp.period}</span>
+          </div>
+          <p class={`text-sm mb-2 ${exp.accent ? 'text-indigo-600' : 'text-gray-500'}`}>
+            {exp.role} <span class="text-gray-400">· {exp.place}</span>
+          </p>
+          <ul class="space-y-1.5 text-sm text-gray-600 leading-relaxed">
+            {exp.points.map((p) => (
+              <li class="relative pl-4">
+                <span class="absolute left-0 top-2 h-1 w-1 rounded-full bg-gray-300"></span>
+                {p}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
   </section>
 
   <!-- Education -->
-  <section class="mb-12">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Education</h2>
-    <div class="flex gap-4">
-      <div class="w-1 bg-indigo-100 rounded shrink-0 mt-1"></div>
-      <div>
-        <div class="flex items-start justify-between gap-4 flex-wrap mb-1">
-          <div>
-            <h3 class="text-sm font-semibold text-gray-900">IIT Kharagpur</h3>
-            <p class="text-sm text-indigo-600">Dual Degree — Industrial and Systems Engineering</p>
-          </div>
-          <span class="text-xs text-gray-400 shrink-0">2012 – 2017</span>
-        </div>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          BTech project on Twitter Sentiment Analysis using Word Vectors and LSTM neural networks,
-          and grammar rule-based factual question generation.
-        </p>
-      </div>
+  <section class="reveal mb-16" style="animation-delay: 120ms">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="font-mono text-xs text-indigo-600">02</span>
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Education</h2>
+      <span class="flex-1 h-px bg-gray-200"></span>
     </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="mb-12">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Projects</h2>
-
-    <div class="space-y-6">
-
-      <a href="https://github.com/ramchandra94" target="_blank" rel="noopener noreferrer" class="group block">
-        <div class="flex items-start justify-between gap-4 mb-1">
-          <h3 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
-            Twitter Sentiment Analysis & Question Generation
-          </h3>
-          <span class="text-xs text-gray-400 shrink-0">IIT KGP · BTech Project</span>
-        </div>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Built a sentiment analysis system using Word Vectors and LSTM neural networks,
-          alongside a grammar rule-based engine for generating factual questions from text.
-        </p>
-        <span class="text-xs text-gray-400">Python · Deep Learning · NLP</span>
-      </a>
-
-      <a href="https://github.com/ramchandra94/forecasting" target="_blank" rel="noopener noreferrer" class="group block">
-        <div class="flex items-start justify-between gap-4 mb-1">
-          <h3 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
-            Forecasting Service
-          </h3>
-          <span class="text-xs text-gray-400 shrink-0">Personal</span>
-        </div>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          A Spring Boot application with authentication and authorization, exploring time-series
-          forecasting and service design.
-        </p>
-        <span class="text-xs text-gray-400">Scala · Spring Boot</span>
-      </a>
-
-      <a href="https://github.com/ramchandra94/algorithms" target="_blank" rel="noopener noreferrer" class="group block">
-        <div class="flex items-start justify-between gap-4 mb-1">
-          <h3 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
-            Algorithms & Data Structures
-          </h3>
-          <span class="text-xs text-gray-400 shrink-0">Ongoing</span>
-        </div>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          An ongoing collection of my work through data structures and algorithms, plus
-          competitive programming solutions.
-        </p>
-        <span class="text-xs text-gray-400">Java · C++</span>
-      </a>
-
-      <a href="https://github.com/ramchandra94/Computer-Vision-NanoDegree" target="_blank" rel="noopener noreferrer" class="group block">
-        <div class="flex items-start justify-between gap-4 mb-1">
-          <h3 class="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
-            Computer Vision Nanodegree
-          </h3>
-          <span class="text-xs text-gray-400 shrink-0">Udacity</span>
-        </div>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Coursework and projects from the Udacity Computer Vision Nanodegree.
-        </p>
-        <span class="text-xs text-gray-400">Python · Jupyter · Computer Vision</span>
-      </a>
-
+    <div class="rounded-xl border border-gray-200 p-5">
+      <div class="flex items-baseline justify-between gap-4 flex-wrap">
+        <h3 class="text-[15px] font-semibold text-gray-900">IIT Kharagpur</h3>
+        <span class="font-mono text-[11px] text-gray-400">2012 – 2017</span>
+      </div>
+      <p class="text-sm text-indigo-600">Dual Degree — Industrial & Systems Engineering</p>
     </div>
   </section>
 
   <!-- Skills -->
-  <section class="mb-12">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Skills</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <section class="reveal mb-16" style="animation-delay: 160ms">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="font-mono text-xs text-indigo-600">03</span>
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Skills</h2>
+      <span class="flex-1 h-px bg-gray-200"></span>
+    </div>
+    <div class="space-y-5">
       <div>
-        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Languages</h3>
+        <h3 class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mb-3">Languages</h3>
         <div class="flex flex-wrap gap-2">
-          {["Java", "C/C++", "Kotlin", "Golang", "Scala", "Python"].map(s => (
-            <span class="px-2.5 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">{s}</span>
+          {languages.map((s) => (
+            <span class="font-mono text-xs px-2.5 py-1 rounded-md border border-gray-200 bg-gray-50 text-gray-700">{s}</span>
           ))}
         </div>
       </div>
       <div>
-        <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Tools & Technologies</h3>
+        <h3 class="font-mono text-[11px] uppercase tracking-wider text-gray-400 mb-3">Tools & Technologies</h3>
         <div class="flex flex-wrap gap-2">
-          {["AWS", "Kubernetes", "Apache Spark", "SpringBoot", "Terraform", "OpenTelemetry", "RabbitMQ", "Databricks", "PromQL"].map(s => (
-            <span class="px-2.5 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">{s}</span>
+          {tools.map((s) => (
+            <span class="font-mono text-xs px-2.5 py-1 rounded-md border border-gray-200 bg-gray-50 text-gray-700">{s}</span>
           ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Currently Learning -->
-  <section class="mb-12">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Currently Learning</h2>
-    <div class="space-y-4">
-      <div class="flex gap-4 items-start">
-        <span class="text-indigo-400 text-xs mt-0.5 shrink-0">▸</span>
-        <div>
-          <p class="text-sm font-medium text-gray-900">CMU 15-445 Database Systems</p>
-          <p class="text-xs text-gray-500">Working through the Fall 2022 lectures and Spring 2023 projects</p>
-        </div>
-      </div>
-      <div class="flex gap-4 items-start">
-        <span class="text-indigo-400 text-xs mt-0.5 shrink-0">▸</span>
-        <div>
-          <p class="text-sm font-medium text-gray-900">MIT 6.824 Distributed Systems</p>
-          <p class="text-xs text-gray-500">Working through the course lectures and labs</p>
-        </div>
-      </div>
+  <!-- Currently Exploring -->
+  <section class="reveal" style="animation-delay: 200ms">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="font-mono text-xs text-indigo-600">04</span>
+      <h2 class="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Currently Exploring</h2>
+      <span class="flex-1 h-px bg-gray-200"></span>
     </div>
-  </section>
-
-  <!-- Certifications -->
-  <section>
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Certifications</h2>
-    <div class="space-y-2">
-      <p class="text-sm text-gray-600">Certificate of Excellence in Introduction to C++ — Coding Ninjas</p>
-      <p class="text-sm text-gray-600">Computer Vision Nanodegree — Udacity</p>
+    <div class="space-y-3">
+      {learning.map((item) => (
+        <div class="flex items-baseline gap-3">
+          <span class="font-mono text-[11px] text-indigo-600 shrink-0 w-24">{item.code}</span>
+          <div>
+            <p class="text-sm font-medium text-gray-900">{item.title}</p>
+            <p class="text-xs text-gray-500">{item.note}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
