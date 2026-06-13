@@ -1,0 +1,86 @@
+---
+title: "Cutting Spark Cluster Launch Time from 20 Minutes to 2"
+description: "How a small CLI tool turned a 20-minute, error-prone cluster setup into a 2-minute command — and what I learned about where time actually goes when you provision infrastructure."
+pubDate: 2026-06-13
+tags: ["spark", "aws", "infrastructure", "hadoop"]
+draft: true
+---
+
+import Mermaid from '../../components/Mermaid.astro';
+
+Every data engineer has felt this: you have a job to run, you kick off a cluster, and then you wait. And wait. By the time the cluster is ready, you've lost your train of thought, refilled your coffee, and answered three Slack messages.
+
+On my team, spinning up a YARN-managed Hadoop + Spark cluster on AWS EC2 took about **20 minutes**. That doesn't sound like much in isolation — but multiply it across a team that launches clusters many times a day, and it adds up to hours of idle waiting and a pile of EC2 hours billed for machines that weren't doing any work yet.
+
+So I built a small CLI tool to fix it. It brought launch time down to **2 minutes**. Here's how, and more importantly, *why* the original process was so slow.
+
+## Where the 20 minutes actually went
+
+The first thing I did was stop guessing and measure. The setup wasn't slow for one reason — it was slow for several, stacked on top of each other and run **sequentially**.
+
+<Mermaid code={`
+graph TD
+    A["Request N EC2 instances"] --> B["Wait for instances to boot"]
+    B --> C["Install Java + Hadoop + Spark<br/>on each node"]
+    C --> D["Write config<br/>(core-site, yarn-site, etc.)"]
+    D --> E["Start HDFS + YARN daemons"]
+    E --> F["Cluster ready"]
+`} />
+
+> ✏️ **Verify / expand:** Replace the steps above with your *actual* launch sequence and the rough time each step took. The whole post hinges on this breakdown — if you can recall even approximate numbers ("instance boot ~3 min, software install ~10 min, config ~5 min"), it makes the story land. What was the single biggest chunk of the 20 minutes?
+
+The pattern that jumped out: most of the time wasn't spent *computing* anything. It was spent **downloading and installing the same software onto fresh machines, every single time**, and doing it one step after another instead of in parallel.
+
+## The two ideas that mattered
+
+The fix came down to two changes.
+
+### 1. Stop installing software at launch time
+
+> ✏️ **Verify / expand:** Describe what you actually did here. The most common approach is baking a custom AMI with Java, Hadoop, and Spark pre-installed, so launched instances are *already provisioned* and skip the slowest step entirely. If that's what you did, say so. If you used something else (a package cache, a snapshot, bootstrap scripts), describe that instead.
+
+The insight is simple: the software doesn't change between launches, so installing it fresh each time is wasted work. Move that cost **out of the hot path** — pay it once, ahead of time, and every subsequent launch gets to skip it.
+
+### 2. Do the independent work in parallel
+
+The original process configured nodes one at a time. But configuring node 3 doesn't depend on node 2 being done — these are independent operations. Fanning them out concurrently collapses a long sequential chain into roughly the time of its slowest single step.
+
+<Mermaid code={`
+graph LR
+    subgraph Before["Before — sequential"]
+        direction TB
+        B1["Node 1"] --> B2["Node 2"] --> B3["Node 3"] --> B4["..."]
+    end
+    subgraph After["After — parallel"]
+        direction TB
+        P1["Node 1"]
+        P2["Node 2"]
+        P3["Node 3"]
+        P4["..."]
+    end
+`} />
+
+> ✏️ **Verify / expand:** How did you actually parallelize? Threads, async calls, a tool like `pssh`/Ansible, or something the cloud SDK gave you? A sentence of real detail here is what separates a generic post from one only *you* could write.
+
+## The result
+
+Launch time dropped from **20 minutes to 2** — a 10x improvement. The wins compounded:
+
+- **Faster iteration.** Spinning up a cluster stopped being a context-switch. You ask for it, and it's there before you've lost focus.
+- **Lower cost.** Those 18 saved minutes per launch were EC2 hours we were paying for while machines sat idle during setup. Across a team, that's real money.
+
+> ✏️ **Verify / expand:** If you have a cost or usage number — even a rough "saved roughly X instance-hours a week" — put it here. Concrete numbers are the most credible part of any engineering post.
+
+## What I took away from it
+
+A few things stuck with me:
+
+- **Measure before you optimize.** I assumed the cluster *compute* was the bottleneck. It wasn't — it was repeated software installation. The fix only became obvious once I looked at where the time actually went.
+- **The fastest work is the work you don't do.** Pre-baking the environment didn't make installation faster; it removed it from the critical path entirely. That's usually a bigger win than speeding something up.
+- **Sequential-by-default is a common, invisible tax.** A lot of "slow" infrastructure is just independent steps run one after another out of habit.
+
+> ✏️ **Your voice:** Add a closing thought or two of your own here — what surprised you, what you'd do differently, or how this shaped the way you think about infrastructure now. This is the part readers remember, and it should sound unmistakably like you.
+
+---
+
+*This is the kind of thing I'll be writing about here — real systems, real tradeoffs, and the reasoning behind them. Thanks for reading.*
